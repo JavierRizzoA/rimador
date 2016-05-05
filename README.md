@@ -13,12 +13,11 @@ Finds the rhyme, the number of syllables, the accented syllable, and other relat
 #License
 
 Copyright (C) 2016 by Javier Rizzo
-javierrizzoa@gmail.com
-http://javierrizzo.com
+(javierrizzoa@gmail.com)
 
 This project is based heavely on DiccionarioDeRimas
 (https://sourceforge.net/projects/diccionariorima/)
-by Eduardo Rodriguez Lorenzo <edu.tabula@gmail.com>,
+by Eduardo Rodriguez Lorenzo (edu.tabula@gmail.com),
 copyright (C) 2009.
 
 This program is free software; you can redistribute it and/or modify
