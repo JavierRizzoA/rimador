@@ -169,7 +169,7 @@ function analyze(word) {
     var begSil = 0;
     var endSil = 0;
 
-    if (countSilables > 1 && (isVowel(lastvarter) || lastLetter == 'n' || lastLetter == 's')) {
+    if (countSilables > 1 && (isVowel(lastLetter) || lastLetter == 'n' || lastLetter == 's')) {
       begSil = silables[countSilables - 2];
       endSil = silables[countSilables - 1];
     } else {
