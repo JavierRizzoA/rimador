@@ -4,7 +4,7 @@
   "description": "Finds the rhyme, the number of syllables, the accented syllable, and other related stuff of Spanish words.",
   "main": "main.js",
   "scripts": {
-    "test": "node main.js"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
