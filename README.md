@@ -2,15 +2,60 @@
 
 Finds the rhyme, the number of syllables, the accented syllable, and other related stuff of Spanish words.
 
-#Code Example
+##Code Example
 
-#Motivation
+```javascript
+var r = require('rimador');
+r.analyze('palabra');
+```
 
-#Installation
+That code returns the following object:
 
-#Tests
+```javascript
+{
+    word: 'palabra',
+    rhyme: 'abra',
+    asonance: 'aa',
+    accentLocation: 3,
+    syllables: 3,
+    accentedSyllable: 1,
+    hyphens: [0, 2, 4]
+}
+```
 
-#License
+##Motivation
+
+Just for the keks.
+
+##Installation
+
+```shell
+npm install rimador
+```
+
+##API Reference
+
+The `analyze(word)` function returns an object with the following properties:
+
+* **word**: The word analyzed.
+* **rhyme**: The rhyme-significant letters.
+* **asonance**: The vocals present in the rhyme, significant to the asonant rhyme.
+* **accentLocation**: The index of the accented character.
+* **syllables**: The number of syllables.
+* **accentedSyllable**: The index of the accented syllable.
+* **hyphens**: An array containing the index of the starting character of each syllable.
+
+##Tests
+
+```shell
+npm run test
+```
+
+##Contribute
+
+Contribute by reporting issues, adding features or fixing bugs.
+
+##License
 
 Copyright (C) 2016 by Javier Rizzo
 (javierrizzoa@gmail.com)
