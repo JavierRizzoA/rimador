@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/JavierRizzoA/rimador/issues"
   },
-  "homepage": "https://github.com/JavierRizzoA/rimador#readme"
+  "homepage": "https://github.com/JavierRizzoA/rimador#readme",
+  "readme": "README.md"
 }
