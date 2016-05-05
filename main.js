@@ -25,8 +25,6 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-"use strict";
-
 function isVowel(c) {
   return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'ü' || c == 'á' || c == 'é' || c == 'í' || c == 'ó' || c == 'ú');
 }
@@ -39,28 +37,28 @@ function isAnAccent(c) {
   return (c == 'á' || c == 'é' || c == 'í' || c == 'ó' || c == 'ú');
 }
 
-function hyphenate(word) {
-  const VOWEL = 0;
-  const CONSONANT = 1;
-  const SOFT = 0;
-  const HARD = 1;
+function analyze(word) {
+  var VOWEL = 0;
+  var CONSONANT = 1;
+  var SOFT = 0;
+  var HARD = 1;
 
-  const AGUDA = 0;
-  const LLANA = 1;
-  const ESDRU = 2;
+  var AGUDA = 0;
+  var LLANA = 1;
+  var ESDRU = 2;
 
-  let rhyme = '';
-  let asonance = '';
-  let oldSil = [];
-  let loc = 0;
-  let silablesTotal = 0;
-  let accentedSil = 0;
+  var rhyme = '';
+  var asonance = '';
+  var oldSil = [];
+  var loc = 0;
+  var silablesTotal = 0;
+  var accentedSil = 0;
 
-  let chars = word.split('');
+  var chars = word.split('');
 
-  let oldTypes = Array(chars.length);
-  let oldSoft = Array(chars.length);
-  for (let i = 0; i < chars.length; i++) {
+  var oldTypes = Array(chars.length);
+  var oldSoft = Array(chars.length);
+  for (var i = 0; i < chars.length; i++) {
     if (isVowel(chars[i]) ||
       (chars[i] == 'y' && (i + 1 == chars.length || (i + 1 < chars.length && !isVowel(chars[i + 1])))))
       oldTypes[i] = VOWEL;
@@ -73,21 +71,21 @@ function hyphenate(word) {
 
   }
 
-  let accentLoc = -1;
+  var accentLoc = -1;
 
-  for (let i = 0; i < chars.length; i++) {
+  for (var i = 0; i < chars.length; i++) {
     if (isAnAccent(chars[i]))
       accentLoc = i;
   }
 
-  let newWordB = chars[0];
-  let positions = new Array(chars.length);
-  let types = new Array(chars.length);
-  let soft = new Array(chars.length);
+  var newWordB = chars[0];
+  var positions = new Array(chars.length);
+  var types = new Array(chars.length);
+  var soft = new Array(chars.length);
   positions[0] = 0;
-  let newLen = 1;
-  for (let i = 1; i < chars.length; i++) {
-    let skip = false;
+  var newLen = 1;
+  for (var i = 1; i < chars.length; i++) {
+    var skip = false;
     if (i == chars.length - 1 && oldTypes[i] == CONSONANT && oldTypes[i - 1] == CONSONANT)
       skip = true;
     if (chars[i] == 's' && chars[i - 1] == 'n' && i + 1 < chars.length && oldTypes[i + 1] == CONSONANT) //transformación
@@ -117,12 +115,12 @@ function hyphenate(word) {
     }
   }
 
-  let newChars = newWordB.split('');
+  var newChars = newWordB.split('');
 
-  let silables = new Array(newChars.length);
-  let countSilables = 0;
-  let lastStart = 0;
-  for (let i = 0; i < newLen; i++) {
+  var silables = new Array(newChars.length);
+  var countSilables = 0;
+  var lastStart = 0;
+  for (var i = 0; i < newLen; i++) {
 
     if (i + 1 >= newLen) {
 
@@ -162,16 +160,16 @@ function hyphenate(word) {
   silablesTotal = countSilables;
 
   oldSil = new Array(countSilables);
-  for (let i = 0; i < countSilables; i++) {
+  for (var i = 0; i < countSilables; i++) {
     oldSil[i] = positions[silables[i]];
   }
   if (accentLoc == -1) {
     // llana o aguda
-    let lastLetter = chars[chars.length - 1];
-    let begSil = 0;
-    let endSil = 0;
+    var lastLetter = chars[chars.length - 1];
+    var begSil = 0;
+    var endSil = 0;
 
-    if (countSilables > 1 && (isVowel(lastLetter) || lastLetter == 'n' || lastLetter == 's')) {
+    if (countSilables > 1 && (isVowel(lastvarter) || lastLetter == 'n' || lastLetter == 's')) {
       begSil = silables[countSilables - 2];
       endSil = silables[countSilables - 1];
     } else {
@@ -179,14 +177,14 @@ function hyphenate(word) {
       endSil = chars.length;
     }
 
-    for (let i = begSil; i < endSil; i++) {
+    for (var i = begSil; i < endSil; i++) {
 
       if (types[i] == VOWEL) {
         if (i + 1 == endSil || types[i + 1] == CONSONANT) {
           accentLoc = positions[i];
 
         } else {
-          for (let j = i; j < endSil; j++) {
+          for (var j = i; j < endSil; j++) {
             if (types[j] == VOWEL && soft[j] == HARD) {
               accentLoc = positions[j];
               j = endSil;
@@ -195,7 +193,7 @@ function hyphenate(word) {
 
           }
           if (accentLoc == -1) {
-            for (let j = endSil - 1; j >= begSil; j--) {
+            for (var j = endSil - 1; j >= begSil; j--) {
               if (types[j] == VOWEL) {
                 accentLoc = positions[j];
                 j = -1;
@@ -210,10 +208,10 @@ function hyphenate(word) {
   }
 
   loc = accentLoc;
-  let rhymeB = '';
-  let asonanceB = '';
+  var rhymeB = '';
+  var asonanceB = '';
   if (accentLoc != -1) {
-    for (let i = accentLoc; i < chars.length; i++) {
+    for (var i = accentLoc; i < chars.length; i++) {
 
       if (chars[i] == 'á') {
         rhymeB += ('a');
@@ -249,7 +247,7 @@ function hyphenate(word) {
   asonance = asonanceB.toString();
 
   accentedSil = -1;
-  for (let i = 0; i < oldSil.length; i++) {
+  for (var i = 0; i < oldSil.length; i++) {
     if (accentLoc >= oldSil[i])
       accentedSil = i;
   }
@@ -265,4 +263,4 @@ function hyphenate(word) {
   };
 }
 
-console.log(hyphenate('astrónomo'));
+exports.analyze = analyze;
