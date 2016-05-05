@@ -1,0 +1,25 @@
+{
+  "name": "rimador",
+  "version": "1.0.0",
+  "description": "Finds the rhyme, the number of syllables, the accented syllable, and other related stuff of Spanish words.",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JavierRizzoA/rimador.git"
+  },
+  "keywords": [
+    "rhyme",
+    "spanish",
+    "syllables",
+    "accent"
+  ],
+  "author": "Javier Rizzo",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/JavierRizzoA/rimador/issues"
+  },
+  "homepage": "https://github.com/JavierRizzoA/rimador#readme"
+}
