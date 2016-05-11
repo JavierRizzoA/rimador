@@ -252,6 +252,9 @@ function analyze(word) {
       accentedSil = i;
   }
 
+  var newSilables = [];
+  silables.forEach(function(s) {if(s != null) newSilables.push(s)});
+
   return {
     word: word,
     rhyme: rhyme,
@@ -259,7 +262,7 @@ function analyze(word) {
     accentLocation: loc,
     syllables: silablesTotal,
     accentedSyllable: accentedSil,
-    hyphens: silables
+    hyphens: newSilables
   };
 }
 
